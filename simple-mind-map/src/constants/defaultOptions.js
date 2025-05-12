@@ -66,10 +66,10 @@ export const defaultOpt = {
   defaultInsertBelowSecondLevelNodeText: '分支主题',
   // 展开收起按钮的颜色
   expandBtnStyle: {
-    color: '#808080',
+    color: '#3478ff',
     fill: '#fff',
     fontSize: 13,
-    strokeColor: '#333333'
+    strokeColor: '#3478ff'
   },
   // 自定义展开收起按钮的图标
   expandBtnIcon: {

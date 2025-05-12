@@ -1291,6 +1291,7 @@ class Render {
               text = htmlEscape(text)
             }
             const textArr = text
+              // eslint-disable-next-line no-control-regex
               .split(new RegExp('\r?\n|(?<!\n)\r', 'g'))
               .filter(item => {
                 return !!item

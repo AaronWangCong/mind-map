@@ -23,8 +23,8 @@ function showQuickCreateChildBtn() {
       this.mindMap.opt
     const { icon, style } = quickCreateChildBtnIcon
     let { color, fill } = expandBtnStyle || {
-      color: '#808080',
-      fill: '#fff'
+      color: '#3478ff',
+      fill: '#3478ff'
     }
     color = style.color || color
     // 图标节点

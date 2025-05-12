@@ -9,6 +9,9 @@ import nodeExpandBtnPlaceholderRectMethods from './nodeExpandBtnPlaceholderRect'
 import nodeModifyWidthMethods from './nodeModifyWidth'
 import nodeCooperateMethods from './nodeCooperate'
 import quickCreateChildBtnMethods from './quickCreateChildBtn'
+import customBtn1Methods from './customBtn1'
+import customBtn2Methods from './customBtn2'
+
 import nodeLayoutMethods from './nodeLayout'
 import { CONSTANTS } from '../../../constants/constant'
 import { copyNodeTree, createUid, addXmlns } from '../../../utils/index'
@@ -160,6 +163,21 @@ class MindMapNode {
         })
         this.initQuickCreateChildBtn()
       }
+      // 自定义按钮1
+      if (this.mindMap.opt.isShowCustomBtn1Icon) {
+        Object.keys(customBtn1Methods).forEach(item => {
+          proto[item] = customBtn1Methods[item]
+        })
+        this.initCustomBtn1()
+      }
+      // 自定义按钮2
+      if (this.mindMap.opt.isShowCustomBtn2Icon) {
+        Object.keys(customBtn2Methods).forEach(item => {
+          proto[item] = customBtn2Methods[item]
+        })
+        this.initCustomBtn2()
+      }
+
       proto.bindEvent = true
     }
     // 初始化
@@ -487,6 +505,8 @@ class MindMapNode {
       alwaysShowExpandBtn,
       notShowExpandBtn,
       isShowCreateChildBtnIcon,
+      isShowCustomBtn1Icon,
+      isShowCustomBtn2Icon,
       readonly
     } = this.mindMap.opt
     const childrenLength = this.getChildrenLength()
@@ -519,6 +539,24 @@ class MindMapNode {
         this.showQuickCreateChildBtn()
       } else {
         this.hideQuickCreateChildBtn()
+      }
+    }
+    // 更新自定义按钮
+    if (isShowCustomBtn1Icon) {
+      const { isActive } = this.getData()
+      if (isActive) {
+        this.showCustomBtn1()
+      } else {
+        this.hideCustomBtn1()
+      }
+    }
+    // 更新自定义按钮
+    if (isShowCustomBtn2Icon) {
+      const { isActive } = this.getData()
+      if (isActive) {
+        this.showCustomBtn2()
+      } else {
+        this.hideCustomBtn2()
       }
     }
     // 更新拖拽手柄的显示与否
@@ -578,17 +616,29 @@ class MindMapNode {
   // 根据是否激活更新节点
   updateNodeByActive(active) {
     if (this.group) {
-      const { isShowCreateChildBtnIcon } = this.mindMap.opt
+      const { isShowCreateChildBtnIcon, isShowCustomBtn1Icon, isShowCustomBtn2Icon } = this.mindMap.opt
       // 切换激活状态，需要切换展开收起按钮的显隐
       if (active) {
         this.showExpandBtn()
         if (isShowCreateChildBtnIcon) {
           this.showQuickCreateChildBtn()
         }
+        if (isShowCustomBtn1Icon) {
+          this.showCustomBtn1()
+        }
+        if (isShowCustomBtn2Icon) {
+          this.showCustomBtn2()
+        }
       } else {
         this.hideExpandBtn()
         if (isShowCreateChildBtnIcon) {
           this.hideQuickCreateChildBtn()
+        }
+        if (isShowCustomBtn1Icon) {
+          this.hideCustomBtn1()
+        }
+        if (isShowCustomBtn2Icon) {
+          this.hideCustomBtn2()
         }
       }
       this.updateNodeActiveClass()
