@@ -514,15 +514,11 @@ class MindMapNode {
     }
     // 更新快速创建子节点按钮
     if (isShowCreateChildBtnIcon) {
-      if (childrenLength > 0) {
-        this.removeQuickCreateChildBtn()
+      const { isActive } = this.getData()
+      if (isActive) {
+        this.showQuickCreateChildBtn()
       } else {
-        const { isActive } = this.getData()
-        if (isActive) {
-          this.showQuickCreateChildBtn()
-        } else {
-          this.hideQuickCreateChildBtn()
-        }
+        this.hideQuickCreateChildBtn()
       }
     }
     // 更新拖拽手柄的显示与否

@@ -9,6 +9,7 @@ function createExpandNodeContent() {
   }
   const { expandBtnSize, expandBtnIcon, isShowExpandNum } = this.mindMap.opt
   let { close, open } = expandBtnIcon || {}
+  const leftX  = 0
   // 根据配置判断是否显示数量按钮
   if (isShowExpandNum) {
     // 展开的节点
@@ -18,7 +19,7 @@ function createExpandNodeContent() {
     this._openExpandNode.attr({
       'text-anchor': 'middle',
       'dominant-baseline': 'middle',
-      x: expandBtnSize / 2,
+      x: expandBtnSize / 2 + leftX,
       y: 2
     })
   } else {
@@ -26,17 +27,17 @@ function createExpandNodeContent() {
       expandBtnSize,
       expandBtnSize
     )
-    this._openExpandNode.x(0).y(-expandBtnSize / 2)
+    this._openExpandNode.x(leftX).y(-expandBtnSize / 2)
   }
   // 收起的节点
   this._closeExpandNode = SVG(close || btnsSvg.close).size(
     expandBtnSize,
     expandBtnSize
   )
-  this._closeExpandNode.x(0).y(-expandBtnSize / 2)
+  this._closeExpandNode.x(leftX).y(-expandBtnSize / 2)
   // 填充节点
   this._fillExpandNode = new Circle().size(expandBtnSize)
-  this._fillExpandNode.x(0).y(-expandBtnSize / 2)
+  this._fillExpandNode.x(leftX).y(-expandBtnSize / 2)
 
   // 设置样式
   this.style.iconBtn(

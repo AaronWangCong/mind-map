@@ -161,7 +161,7 @@ export const defaultOpt = {
   // 是否在鼠标双击时回到根节点，也就是让根节点居中显示
   enableDblclickBackToRootNode: false,
   // 节点鼠标hover和激活时显示的矩形边框的颜色
-  hoverRectColor: 'rgb(94, 200, 248)',
+  hoverRectColor: '#3478ff',
   // 节点鼠标hover和激活时显示的矩形边框距节点内容的距离
   hoverRectPadding: 2,
   // 双击节点进入节点文本编辑时是否默认选中文本，默认只在创建新节点时会选中
@@ -300,6 +300,24 @@ export const defaultOpt = {
       // color: '',// 图标颜色，不手动设置则会使用expandBtnStyle选项的color字段
     }
   },
+  // 自定义按钮1
+  isShowCustomBtn1Icon: false,
+  customBtnIcon1: {
+    icon: '', // svg字符串，如果不是确定要使用svg自带的样式，否则请去除其中的fill等样式属性
+    style: {
+      // 图标大小使用的是expandBtnSize选项
+      // color: '',// 图标颜色，不手动设置则会使用expandBtnStyle选项的color字段
+    }
+  },
+  // 自定义按钮2
+  isShowCustomBtn2Icon: false,
+  customBtnIcon2: {
+    icon: '', // svg字符串，如果不是确定要使用svg自带的样式，否则请去除其中的fill等样式属性
+    style: {
+      // 图标大小使用的是expandBtnSize选项
+      // color: '',// 图标颜色，不手动设置则会使用expandBtnStyle选项的color字段
+    }
+  },
   // 自定义快捷创建子节点按钮的点击操作，
   customQuickCreateChildBtnClick: null,
   // 添加自定义的节点内容
@@ -307,7 +325,7 @@ export const defaultOpt = {
   /*
     {
       // 返回要添加的DOM元素详细
-      create: (node) => { 
+      create: (node) => {
         return {
           el, // DOM节点
           width: 20, // 宽高
@@ -316,7 +334,7 @@ export const defaultOpt = {
       },
       // 处理生成的@svgdotjs/svg.js库的ForeignObject节点实例，可以设置其在节点内的位置
       handle: ({ content, element, node }) => {
-        
+
       }
     }
   */
@@ -339,13 +357,13 @@ export const defaultOpt = {
   dragMultiNodeRectConfig: {
     width: 40,
     height: 20,
-    fill: 'rgb(94, 200, 248)' // 填充颜色
+    fill: '#3478ff' // 填充颜色
   },
   // 节点拖拽时新位置的示意矩形的填充颜色
-  dragPlaceholderRectFill: 'rgb(94, 200, 248)',
+  dragPlaceholderRectFill: '#3478ff',
   // 节点拖拽时新位置的示意连线的样式配置
   dragPlaceholderLineConfig: {
-    color: 'rgb(94, 200, 248)',
+    color: '#3478ff',
     width: 2
   },
   // 节点拖拽时的透明度配置

@@ -9,9 +9,14 @@ function initQuickCreateChildBtn() {
 
 // 显示按钮
 function showQuickCreateChildBtn() {
-  if (this.isGeneralization || this.getChildrenLength() > 0) return
+  if (this.isGeneralization) return
+  const leftX  = this.getChildrenLength() > 0 ? 22 : 10
   // 创建按钮
   if (this._quickCreateChildBtn) {
+    // 重新绘制按钮的左边距离
+    this._quickCreateChildBtn.each((index) => {
+      this._quickCreateChildBtn.get(index).x(leftX)
+    })
     this.group.add(this._quickCreateChildBtn)
   } else {
     const { quickCreateChildBtnIcon, expandBtnStyle, expandBtnSize } =
@@ -30,11 +35,11 @@ function showQuickCreateChildBtn() {
     iconNode.css({
       cursor: 'pointer'
     })
-    iconNode.x(0).y(-expandBtnSize / 2)
+    iconNode.x(leftX).y(-expandBtnSize / 2)
     this.style.iconNode(iconNode, color)
     // 填充节点
     const fillNode = new Circle().size(expandBtnSize)
-    fillNode.x(0).y(-expandBtnSize / 2)
+    fillNode.x(leftX).y(-expandBtnSize / 2)
     fillNode.fill({ color: fill }).css({
       cursor: 'pointer'
     })
